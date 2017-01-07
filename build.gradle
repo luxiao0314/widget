@@ -25,9 +25,18 @@ android {
 }
 
 dependencies {
+    compile project(':frescoUtil')
     //UI
     compile androidDependencies.recyclerView
     compile androidDependencies.cardview_v7
     compile androidDependencies.appcompat_v7
     compile androidDependencies.design
+
+    //rxjava
+    compile viewDependencies.rxjava
+    compile viewDependencies.rxandroid
+    compile viewDependencies.rxbinding
+
+    //fresco
+    compile viewDependencies.fresco
 }
