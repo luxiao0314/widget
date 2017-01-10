@@ -9,14 +9,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.mvvm.lux.framework.manager.imageloader.ImageLoader;
 import com.mvvm.lux.widget.R;
 import com.mvvm.lux.widget.utils.DisplayUtil;
+import com.shuyu.frescoutil.FrescoHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import lib.lhh.fiv.library.FrescoImageView;
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -136,13 +137,8 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
         points.getChildAt(0).setBackgroundResource(selectRes);
 
         for (int i = 0; i < bannerList.size(); i++) {
-//            FrescoImageView mImageView = new FrescoImageView(context);
-//            FrescoHelper.loadNet(mImageView,bannerList.get(i).img);
-
-            ImageView mImageView = new ImageView(context);
-            ImageLoader.getLoader()
-                    .loadImage(bannerList.get(i).img,R.drawable.default_bg,mImageView);
-
+            FrescoImageView mImageView = new FrescoImageView(context);
+            FrescoHelper.loadNet(mImageView, bannerList.get(i).img);
             imageViewList.add(mImageView);
         }
 
