@@ -1,7 +1,8 @@
 package com.mvvm.lux.widget.utils;
 
-import android.content.Context;
 import android.util.DisplayMetrics;
+
+import com.mvvm.lux.framework.BaseApplication;
 
 /**
  * Created by hcc on 16/8/4 21:18
@@ -11,47 +12,48 @@ import android.util.DisplayMetrics;
  */
 public class DisplayUtil {
 
-    public static int px2dp(Context context, float pxValue) {
+    private static BaseApplication sContext = BaseApplication.getAppContext();
 
-        final float scale = context.getResources().getDisplayMetrics().density;
+    public static int px2dp(float pxValue) {
+
+        final float scale = sContext.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
 
-    public static int dp2px(Context context, float dipValue) {
-
-        final float scale = context.getResources().getDisplayMetrics().density;
+    public static int dp2px(float dipValue) {
+        final float scale = sContext.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
 
-    public static int px2sp(Context context, float pxValue) {
+    public static int px2sp(float pxValue) {
 
-        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        final float fontScale = sContext.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
     }
 
-    public static int sp2px(Context context, float spValue) {
+    public static int sp2px(float spValue) {
 
-        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        final float fontScale = sContext.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 
-    public static int getScreenWidth(Context context) {
+    public static int getScreenWidth() {
 
-        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        DisplayMetrics dm = sContext.getResources().getDisplayMetrics();
         return dm.widthPixels;
     }
 
-    public static int getScreenHeight(Context context) {
+    public static int getScreenHeight() {
 
-        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        DisplayMetrics dm = sContext.getResources().getDisplayMetrics();
         return dm.heightPixels;
     }
 
-    public static float getDisplayDensity(Context context) {
+    public static float getDisplayDensity() {
 
-        if (context == null) {
+        if (sContext == null) {
             return -1;
         }
-        return context.getResources().getDisplayMetrics().density;
+        return sContext.getResources().getDisplayMetrics().density;
     }
 }
