@@ -1,5 +1,6 @@
 package com.mvvm.lux.widget.utils;
 
+import android.content.res.Configuration;
 import android.util.DisplayMetrics;
 
 import com.mvvm.lux.framework.BaseApplication;
@@ -55,5 +56,20 @@ public class DisplayUtil {
             return -1;
         }
         return sContext.getResources().getDisplayMetrics().density;
+    }
+
+    /**
+     * 是否为竖屏
+     *
+     * @return
+     */
+    public static boolean isPortrait() {
+        int mCurrentOrientation = sContext.getResources().getConfiguration().orientation;
+        if (mCurrentOrientation == Configuration.ORIENTATION_PORTRAIT) {
+            return true;
+        } else if (mCurrentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            return false;
+        }
+        return false;
     }
 }
