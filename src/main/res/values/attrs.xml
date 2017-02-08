@@ -18,6 +18,11 @@
         <attr name="waveViewStyle" format="reference"/>
     </declare-styleable>
 
+     <declare-styleable name="PathmMultiView">
+        <attr name="path_backgroundColor" format="color"/>
+        <attr name="path_height" format="dimension"/>
+    </declare-styleable>
+
     <declare-styleable name="WaveView">
         <attr name="above_wave_color" format="color"/>
         <attr name="blow_wave_color" format="color"/>
