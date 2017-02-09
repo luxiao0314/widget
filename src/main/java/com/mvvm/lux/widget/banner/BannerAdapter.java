@@ -23,24 +23,20 @@ public class BannerAdapter extends PagerAdapter {
     private ViewPagerOnItemClickListener mViewPagerOnItemClickListener;
 
     public void setmViewPagerOnItemClickListener(ViewPagerOnItemClickListener mViewPagerOnItemClickListener) {
-
         this.mViewPagerOnItemClickListener = mViewPagerOnItemClickListener;
     }
 
     public BannerAdapter(List<ImageView> list) {
-
         this.mList = list;
     }
 
     @Override
     public int getCount() {
-
         return Integer.MAX_VALUE;
     }
 
     @Override
     public boolean isViewFromObject(View arg0, Object arg1) {
-
         return arg0 == arg1;
     }
 
@@ -65,7 +61,6 @@ public class BannerAdapter extends PagerAdapter {
 
             @Override
             public void onClick(View v) {
-
                 if (mViewPagerOnItemClickListener != null) {
                     mViewPagerOnItemClickListener.onItemClick(pos);
                 }
@@ -84,7 +79,6 @@ public class BannerAdapter extends PagerAdapter {
 
 
     public interface ViewPagerOnItemClickListener {
-
         void onItemClick(int position);
     }
 }
