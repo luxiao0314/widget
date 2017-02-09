@@ -180,7 +180,8 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
 
         BannerAdapter bannerAdapter = new BannerAdapter(imageViewList);
         viewPager.setAdapter(bannerAdapter);
-        viewPager.setPageTransformer(true,new ZoomOutPageTransformer());
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        viewPager.setCurrentItem(imageViewList.size() * 1000);
         bannerAdapter.notifyDataSetChanged();
         bannerAdapter.setmViewPagerOnItemClickListener(this);
 
