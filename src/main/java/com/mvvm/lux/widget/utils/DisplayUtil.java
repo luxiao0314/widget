@@ -1,7 +1,13 @@
 package com.mvvm.lux.widget.utils;
 
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
+import android.view.View;
 
 import com.mvvm.lux.framework.BaseApplication;
 
@@ -72,4 +78,21 @@ public class DisplayUtil {
         }
         return false;
     }
+
+    public static Drawable getDrawble(@DrawableRes int id){
+        return ContextCompat.getDrawable(sContext,id);
+    }
+
+    public static int getColor(@ColorRes int id){
+        return  ContextCompat.getColor(sContext,id);
+    }
+
+    public static String getString(@StringRes int id){
+        return  sContext.getResources().getString(id);
+    }
+
+    public static <T extends View> T findViewById(View v, int id) {
+        return (T) v.findViewById(id);
+    }
+
 }

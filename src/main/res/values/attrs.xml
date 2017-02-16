@@ -43,4 +43,8 @@
             <enum name="slow" value="3"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="LoadingLayout">
+        <attr name="isFirstVisible" format="boolean"></attr>
+    </declare-styleable>
 </resources>
