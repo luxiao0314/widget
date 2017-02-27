@@ -45,7 +45,7 @@ public class PathmMultiView extends View {
     }
 
     private void initPaint() {
-        width = DisplayUtil.getScreenWidth();
+        width = DisplayUtil.getScreenWidth(getContext());
         height = width / 2 - 50;
         path = new Path();
         paint = new Paint();

@@ -98,10 +98,10 @@ public class LoadingLayout extends FrameLayout {
         networkPage = LayoutInflater.from(mContext).inflate(R.layout.widget_nonetwork_page, null);
         defineLoadingPage = null;
 
-        loadingPage.setBackgroundColor(DisplayUtil.getColor(mConfig.backgroundColor));
-        errorPage.setBackgroundColor(DisplayUtil.getColor(mConfig.backgroundColor));
-        emptyPage.setBackgroundColor(DisplayUtil.getColor(mConfig.backgroundColor));
-        networkPage.setBackgroundColor(DisplayUtil.getColor(mConfig.backgroundColor));
+        loadingPage.setBackgroundColor(DisplayUtil.getColor(mContext,mConfig.backgroundColor));
+        errorPage.setBackgroundColor(DisplayUtil.getColor(mContext,mConfig.backgroundColor));
+        emptyPage.setBackgroundColor(DisplayUtil.getColor(mContext,mConfig.backgroundColor));
+        networkPage.setBackgroundColor(DisplayUtil.getColor(mContext,mConfig.backgroundColor));
 
         errorText = DisplayUtil.findViewById(errorPage, R.id.error_text);
         emptyText = DisplayUtil.findViewById(emptyPage, R.id.empty_text);
@@ -141,9 +141,9 @@ public class LoadingLayout extends FrameLayout {
         emptyText.setTextSize(mConfig.tipTextSize);
         networkText.setTextSize(mConfig.tipTextSize);
 
-        errorText.setTextColor(DisplayUtil.getColor(mConfig.tipTextColor));
-        emptyText.setTextColor(DisplayUtil.getColor(mConfig.tipTextColor));
-        networkText.setTextColor(DisplayUtil.getColor(mConfig.tipTextColor));
+        errorText.setTextColor(DisplayUtil.getColor(mContext,mConfig.tipTextColor));
+        emptyText.setTextColor(DisplayUtil.getColor(mContext,mConfig.tipTextColor));
+        networkText.setTextColor(DisplayUtil.getColor(mContext,mConfig.tipTextColor));
 
         errorImg.setImageResource(mConfig.errorImgId);
         emptyImg.setImageResource(mConfig.emptyImgId);
@@ -159,18 +159,18 @@ public class LoadingLayout extends FrameLayout {
         errorReloadBtn.setTextSize(mConfig.buttonTextSize);
         networkReloadBtn.setTextSize(mConfig.buttonTextSize);
 
-        errorReloadBtn.setTextColor(DisplayUtil.getColor(mConfig.buttonTextColor));
-        networkReloadBtn.setTextColor(DisplayUtil.getColor(mConfig.buttonTextColor));
+        errorReloadBtn.setTextColor(DisplayUtil.getColor(mContext,mConfig.buttonTextColor));
+        networkReloadBtn.setTextColor(DisplayUtil.getColor(mContext,mConfig.buttonTextColor));
 
         if (mConfig.buttonHeight != -1) {
 
-            errorReloadBtn.setHeight(DisplayUtil.dp2px(mConfig.buttonHeight));
-            networkReloadBtn.setHeight(DisplayUtil.dp2px(mConfig.buttonHeight));
+            errorReloadBtn.setHeight(DisplayUtil.dp2px(mContext,mConfig.buttonHeight));
+            networkReloadBtn.setHeight(DisplayUtil.dp2px(mContext,mConfig.buttonHeight));
         }
         if (mConfig.buttonWidth != -1) {
 
-            errorReloadBtn.setWidth(DisplayUtil.dp2px(mConfig.buttonWidth));
-            networkReloadBtn.setWidth(DisplayUtil.dp2px(mConfig.buttonWidth));
+            errorReloadBtn.setWidth(DisplayUtil.dp2px(mContext,mConfig.buttonWidth));
+            networkReloadBtn.setWidth(DisplayUtil.dp2px(mContext,mConfig.buttonWidth));
         }
 
         this.addView(networkPage);
@@ -460,8 +460,8 @@ public class LoadingLayout extends FrameLayout {
      */
     public LoadingLayout setReloadButtonTextColor(@ColorRes int id) {
 
-        errorReloadBtn.setTextColor(DisplayUtil.getColor(id));
-        networkReloadBtn.setTextSize(DisplayUtil.getColor(id));
+        errorReloadBtn.setTextColor(DisplayUtil.getColor(mContext,id));
+        networkReloadBtn.setTextSize(DisplayUtil.getColor(mContext,id));
         return this;
     }
 
@@ -530,13 +530,13 @@ public class LoadingLayout extends FrameLayout {
     public LoadingLayout setDefineBackgroundColor(@ColorRes int color) {
 
         if (defineLoadingPage == null) {
-            loadingPage.setBackgroundColor(DisplayUtil.getColor(color));
+            loadingPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
         } else {
-            defineLoadingPage.setBackgroundColor(DisplayUtil.getColor(color));
+            defineLoadingPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
         }
-        errorPage.setBackgroundColor(DisplayUtil.getColor(color));
-        emptyPage.setBackgroundColor(DisplayUtil.getColor(color));
-        networkPage.setBackgroundColor(DisplayUtil.getColor(color));
+        errorPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
+        emptyPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
+        networkPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
         return this;
     }
 

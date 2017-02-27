@@ -1,5 +1,6 @@
 package com.mvvm.lux.widget.utils;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
@@ -9,7 +10,6 @@ import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.View;
 
-import com.mvvm.lux.framework.BaseApplication;
 
 /**
  * Created by hcc on 16/8/4 21:18
@@ -19,49 +19,48 @@ import com.mvvm.lux.framework.BaseApplication;
  */
 public class DisplayUtil {
 
-    private static BaseApplication sContext = BaseApplication.getAppContext();
 
-    public static int px2dp(float pxValue) {
+    public static int px2dp(Context context,float pxValue) {
 
-        final float scale = sContext.getResources().getDisplayMetrics().density;
+        final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
 
-    public static int dp2px(float dipValue) {
-        final float scale = sContext.getResources().getDisplayMetrics().density;
+    public static int dp2px(Context context,float dipValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
 
-    public static int px2sp(float pxValue) {
+    public static int px2sp(Context context,float pxValue) {
 
-        final float fontScale = sContext.getResources().getDisplayMetrics().scaledDensity;
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (pxValue / fontScale + 0.5f);
     }
 
-    public static int sp2px(float spValue) {
+    public static int sp2px(Context context,float spValue) {
 
-        final float fontScale = sContext.getResources().getDisplayMetrics().scaledDensity;
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
 
-    public static int getScreenWidth() {
+    public static int getScreenWidth(Context context) {
 
-        DisplayMetrics dm = sContext.getResources().getDisplayMetrics();
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.widthPixels;
     }
 
-    public static int getScreenHeight() {
+    public static int getScreenHeight(Context context) {
 
-        DisplayMetrics dm = sContext.getResources().getDisplayMetrics();
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.heightPixels;
     }
 
-    public static float getDisplayDensity() {
+    public static float getDisplayDensity(Context context) {
 
-        if (sContext == null) {
+        if (context == null) {
             return -1;
         }
-        return sContext.getResources().getDisplayMetrics().density;
+        return context.getResources().getDisplayMetrics().density;
     }
 
     /**
@@ -69,8 +68,8 @@ public class DisplayUtil {
      *
      * @return
      */
-    public static boolean isPortrait() {
-        int mCurrentOrientation = sContext.getResources().getConfiguration().orientation;
+    public static boolean isPortrait(Context context) {
+        int mCurrentOrientation = context.getResources().getConfiguration().orientation;
         if (mCurrentOrientation == Configuration.ORIENTATION_PORTRAIT) {
             return true;
         } else if (mCurrentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
@@ -79,16 +78,16 @@ public class DisplayUtil {
         return false;
     }
 
-    public static Drawable getDrawble(@DrawableRes int id){
-        return ContextCompat.getDrawable(sContext,id);
+    public static Drawable getDrawble(Context context,@DrawableRes int id){
+        return ContextCompat.getDrawable(context,id);
     }
 
-    public static int getColor(@ColorRes int id){
-        return  ContextCompat.getColor(sContext,id);
+    public static int getColor(Context context,@ColorRes int id){
+        return  ContextCompat.getColor(context,id);
     }
 
-    public static String getString(@StringRes int id){
-        return  sContext.getResources().getString(id);
+    public static String getString(Context context,@StringRes int id){
+        return  context.getResources().getString(id);
     }
 
     public static <T extends View> T findViewById(View v, int id) {

@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    compile project(':framework')
+    compile project(':frescoUtil')
     //UI
     compile androidDependencies.recyclerView
     compile androidDependencies.cardview_v7
