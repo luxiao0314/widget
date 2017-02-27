@@ -44,12 +44,9 @@ public class BannerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
 
         //对ViewPager页号求模取出View列表中要显示的项
-        position %= mList.size();
-        if (position < 0) {
-            position = mList.size() + position;
-        }
-        ImageView v = mList.get(position);
+        position = position % mList.size();
         pos = position;
+        ImageView v = mList.get(position);
         v.setScaleType(ImageView.ScaleType.FIT_XY);
         //如果View已经在之前添加到了一个父组件，则必须先remove，否则会抛出IllegalStateException。
         ViewParent vp = v.getParent();
