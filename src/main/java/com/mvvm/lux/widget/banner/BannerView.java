@@ -31,7 +31,7 @@ import rx.subscriptions.CompositeSubscription;
  * <p/>
  * 自定义Banner无限轮播控件
  */
-public class BannerView extends RelativeLayout implements BannerAdapter.ViewPagerOnItemClickListener {
+public class BannerView extends RelativeLayout{
 
     ViewPager viewPager;
     LinearLayout points;
@@ -52,6 +52,7 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
 
     //非选中显示Indicator
     private int unSelcetRes = R.drawable.shape_dots_default;
+    private BannerAdapter mBannerAdapter;
 
     public BannerView(Context context) {
 
@@ -178,12 +179,11 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
             }
         });
 
-        BannerAdapter bannerAdapter = new BannerAdapter(imageViewList);
-        viewPager.setAdapter(bannerAdapter);
+        mBannerAdapter = new BannerAdapter(imageViewList);
+        viewPager.setAdapter(mBannerAdapter);
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
         viewPager.setCurrentItem(imageViewList.size() * 1000);
-        bannerAdapter.notifyDataSetChanged();
-        bannerAdapter.setmViewPagerOnItemClickListener(this);
+        mBannerAdapter.notifyDataSetChanged();
 
         //图片开始轮播
         startScroll();
@@ -235,25 +235,12 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
     }
 
     public void destory() {
-
         if (compositeSubscription != null) {
             compositeSubscription.unsubscribe();
         }
     }
 
-    /**
-     * 设置ViewPager的Item点击回调事件
-     *
-     * @param position
-     */
-    @Override
-    public void onItemClick(int position) {
-
-        if (position == 0) {
-            position = bannerList.size() - 1;
-        } else {
-            position -= 1;
-        }
-//        BrowserActivity.launch((Activity) context, bannerList.get(position).link, bannerList.get(position).title);
+    public void setmViewPagerOnItemClickListener(BannerAdapter.ViewPagerOnItemClickListener listener){
+        mBannerAdapter.setmViewPagerOnItemClickListener(listener);
     }
 }
