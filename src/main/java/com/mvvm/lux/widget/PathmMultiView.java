@@ -64,7 +64,7 @@ public class PathmMultiView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         path.moveTo(0, 0);
-        path.lineTo(0, height - 50);
+        path.lineTo(0, height - DisplayUtil.dp2px(getContext(),50));
         path.lineTo(width, height);
         path.lineTo(width, 0);
         paint.setStrokeWidth(3);

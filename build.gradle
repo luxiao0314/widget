@@ -35,7 +35,6 @@ dependencies {
     //rxjava
     compile viewDependencies.rxjava
     compile viewDependencies.rxandroid
-    compile viewDependencies.rxbinding
 
     //fresco
     compile viewDependencies.fresco
