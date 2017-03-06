@@ -5,8 +5,13 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.os.Build;
 import android.os.Vibrator;
+import android.support.annotation.DrawableRes;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
+import android.widget.ImageView;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Author: Season(ssseasonnn@gmail.com)
@@ -76,5 +81,37 @@ public class Utils {
                 0, duration
         };
         vibrator.vibrate(pattern, -1);
+    }
+
+    public static ImageView getItemImageView(Context context, @DrawableRes int placeholderResId) {
+        return getItemImageView(context, placeholderResId, ImageView.ScaleType.CENTER_CROP);
+    }
+
+    public static ImageView getItemImageView(Context context, @DrawableRes int placeholderResId, ImageView.ScaleType scaleType) {
+        ImageView imageView = new ImageView(context);
+        imageView.setImageResource(placeholderResId);
+        imageView.setClickable(true);
+        imageView.setScaleType(scaleType);
+        return imageView;
+    }
+
+    public static void resetPageTransformer(List<? extends View> views) {
+        if (views == null) {
+            return;
+        }
+
+        for (View view : views) {
+            view.setVisibility(View.VISIBLE);
+            ViewCompat.setAlpha(view, 1);
+            ViewCompat.setPivotX(view, view.getMeasuredWidth() * 0.5f);
+            ViewCompat.setPivotY(view, view.getMeasuredHeight() * 0.5f);
+            ViewCompat.setTranslationX(view, 0);
+            ViewCompat.setTranslationY(view, 0);
+            ViewCompat.setScaleX(view, 1);
+            ViewCompat.setScaleY(view, 1);
+            ViewCompat.setRotationX(view, 0);
+            ViewCompat.setRotationY(view, 0);
+            ViewCompat.setRotation(view, 0);
+        }
     }
 }
