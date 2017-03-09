@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.mvvm.lux.widget.R;
 import com.mvvm.lux.widget.utils.DisplayUtil;
+import com.mvvm.lux.widget.utils.Utils;
 
 
 /**
@@ -88,9 +89,9 @@ public class LoadingLayout extends FrameLayout {
 
     private void build() {
 
-        if (mConfig.loadingView == null) {
+        if(mConfig.loadingView==null){
             loadingPage = LayoutInflater.from(mContext).inflate(mConfig.loadingLayoutId, null);
-        } else {
+        }else {
             loadingPage = mConfig.loadingView;
         }
         errorPage = LayoutInflater.from(mContext).inflate(R.layout.widget_error_page, null);
@@ -98,21 +99,21 @@ public class LoadingLayout extends FrameLayout {
         networkPage = LayoutInflater.from(mContext).inflate(R.layout.widget_nonetwork_page, null);
         defineLoadingPage = null;
 
-        loadingPage.setBackgroundColor(DisplayUtil.getColor(mContext,mConfig.backgroundColor));
-        errorPage.setBackgroundColor(DisplayUtil.getColor(mContext,mConfig.backgroundColor));
-        emptyPage.setBackgroundColor(DisplayUtil.getColor(mContext,mConfig.backgroundColor));
-        networkPage.setBackgroundColor(DisplayUtil.getColor(mContext,mConfig.backgroundColor));
+        loadingPage.setBackgroundColor(Utils.getColor(mContext, mConfig.backgroundColor));
+        errorPage.setBackgroundColor(Utils.getColor(mContext, mConfig.backgroundColor));
+        emptyPage.setBackgroundColor(Utils.getColor(mContext, mConfig.backgroundColor));
+        networkPage.setBackgroundColor(Utils.getColor(mContext, mConfig.backgroundColor));
 
-        errorText = DisplayUtil.findViewById(errorPage, R.id.error_text);
-        emptyText = DisplayUtil.findViewById(emptyPage, R.id.empty_text);
-        networkText = DisplayUtil.findViewById(networkPage, R.id.no_network_text);
+        errorText = Utils.findViewById(errorPage, R.id.error_text);
+        emptyText = Utils.findViewById(emptyPage, R.id.empty_text);
+        networkText = Utils.findViewById(networkPage, R.id.no_network_text);
 
-        errorImg = DisplayUtil.findViewById(errorPage, R.id.error_img);
-        emptyImg = DisplayUtil.findViewById(emptyPage, R.id.empty_img);
-        networkImg = DisplayUtil.findViewById(networkPage, R.id.no_network_img);
+        errorImg = Utils.findViewById(errorPage, R.id.error_img);
+        emptyImg = Utils.findViewById(emptyPage, R.id.empty_img);
+        networkImg = Utils.findViewById(networkPage, R.id.no_network_img);
 
-        errorReloadBtn = DisplayUtil.findViewById(errorPage, R.id.error_reload_btn);
-        networkReloadBtn = DisplayUtil.findViewById(networkPage, R.id.no_network_reload_btn);
+        errorReloadBtn = Utils.findViewById(errorPage, R.id.error_reload_btn);
+        networkReloadBtn = Utils.findViewById(networkPage, R.id.no_network_reload_btn);
 
         errorReloadBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -141,9 +142,9 @@ public class LoadingLayout extends FrameLayout {
         emptyText.setTextSize(mConfig.tipTextSize);
         networkText.setTextSize(mConfig.tipTextSize);
 
-        errorText.setTextColor(DisplayUtil.getColor(mContext,mConfig.tipTextColor));
-        emptyText.setTextColor(DisplayUtil.getColor(mContext,mConfig.tipTextColor));
-        networkText.setTextColor(DisplayUtil.getColor(mContext,mConfig.tipTextColor));
+        errorText.setTextColor(Utils.getColor(mContext, mConfig.tipTextColor));
+        emptyText.setTextColor(Utils.getColor(mContext, mConfig.tipTextColor));
+        networkText.setTextColor(Utils.getColor(mContext, mConfig.tipTextColor));
 
         errorImg.setImageResource(mConfig.errorImgId);
         emptyImg.setImageResource(mConfig.emptyImgId);
@@ -159,18 +160,18 @@ public class LoadingLayout extends FrameLayout {
         errorReloadBtn.setTextSize(mConfig.buttonTextSize);
         networkReloadBtn.setTextSize(mConfig.buttonTextSize);
 
-        errorReloadBtn.setTextColor(DisplayUtil.getColor(mContext,mConfig.buttonTextColor));
-        networkReloadBtn.setTextColor(DisplayUtil.getColor(mContext,mConfig.buttonTextColor));
+        errorReloadBtn.setTextColor(Utils.getColor(mContext, mConfig.buttonTextColor));
+        networkReloadBtn.setTextColor(Utils.getColor(mContext, mConfig.buttonTextColor));
 
         if (mConfig.buttonHeight != -1) {
 
-            errorReloadBtn.setHeight(DisplayUtil.dp2px(mContext,mConfig.buttonHeight));
-            networkReloadBtn.setHeight(DisplayUtil.dp2px(mContext,mConfig.buttonHeight));
+            errorReloadBtn.setHeight(DisplayUtil.dp2px(mContext, mConfig.buttonHeight));
+            networkReloadBtn.setHeight(DisplayUtil.dp2px(mContext, mConfig.buttonHeight));
         }
         if (mConfig.buttonWidth != -1) {
 
-            errorReloadBtn.setWidth(DisplayUtil.dp2px(mContext,mConfig.buttonWidth));
-            networkReloadBtn.setWidth(DisplayUtil.dp2px(mContext,mConfig.buttonWidth));
+            errorReloadBtn.setWidth(DisplayUtil.dp2px(mContext, mConfig.buttonWidth));
+            networkReloadBtn.setWidth(DisplayUtil.dp2px(mContext, mConfig.buttonWidth));
         }
 
         this.addView(networkPage);
@@ -460,8 +461,8 @@ public class LoadingLayout extends FrameLayout {
      */
     public LoadingLayout setReloadButtonTextColor(@ColorRes int id) {
 
-        errorReloadBtn.setTextColor(DisplayUtil.getColor(mContext,id));
-        networkReloadBtn.setTextSize(DisplayUtil.getColor(mContext,id));
+        errorReloadBtn.setTextColor(Utils.getColor(mContext, id));
+        networkReloadBtn.setTextSize(Utils.getColor(mContext, id));
         return this;
     }
 
@@ -530,13 +531,13 @@ public class LoadingLayout extends FrameLayout {
     public LoadingLayout setDefineBackgroundColor(@ColorRes int color) {
 
         if (defineLoadingPage == null) {
-            loadingPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
+            loadingPage.setBackgroundColor(Utils.getColor(mContext, color));
         } else {
-            defineLoadingPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
+            defineLoadingPage.setBackgroundColor(Utils.getColor(mContext, color));
         }
-        errorPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
-        emptyPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
-        networkPage.setBackgroundColor(DisplayUtil.getColor(mContext,color));
+        errorPage.setBackgroundColor(Utils.getColor(mContext, color));
+        emptyPage.setBackgroundColor(Utils.getColor(mContext, color));
+        networkPage.setBackgroundColor(Utils.getColor(mContext, color));
         return this;
     }
 
@@ -589,9 +590,9 @@ public class LoadingLayout extends FrameLayout {
         String errorStr = "加载失败，请稍后重试···";
         String netwrokStr = "无网络连接，请检查网络···";
         String reloadBtnStr = "点击重试";
-        int emptyImgId = R.drawable.empty;
-        int errorImgId = R.drawable.error;
-        int networkImgId = R.drawable.no_network;
+        int emptyImgId = R.drawable.define_empty;
+        int errorImgId = R.drawable.define_error;
+        int networkImgId = R.drawable.define_nonetwork;
         int reloadBtnId = R.drawable.selector_btn_back_gray;
         int tipTextSize = 14;
         int buttonTextSize = 14;
@@ -700,9 +701,9 @@ public class LoadingLayout extends FrameLayout {
             return mConfig;
         }
 
-        public Config setLoadingPageView(View view) {
+        public Config setLoadingPageView(View view){
 
-            this.loadingView = view;
+            this.loadingView  = view;
             return mConfig;
         }
 
