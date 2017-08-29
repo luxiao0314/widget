@@ -38,4 +38,5 @@ dependencies {
 
     //fresco
     compile viewDependencies.fresco
+    compile 'com.tencent.sonic:sdk:1.0.0'
 }
